@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/username/projectname.svg?branch=master)](https://travis-ci.com/username/projectname)
+![CI status](https://github.com/hexlet-boilerplates/ruby-gem/actions/workflows/master.yml/badge.svg)
 
 # HexletCode
 
