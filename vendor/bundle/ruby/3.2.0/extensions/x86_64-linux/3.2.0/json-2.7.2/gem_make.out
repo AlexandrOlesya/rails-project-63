@@ -1,0 +1,16 @@
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+/home/alex/.rvm/rubies/ruby-3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-yb94fp sitelibdir\=./.gem.20240930-14846-yb94fp clean
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-yb94fp sitelibdir\=./.gem.20240930-14846-yb94fp
+make: Цель «all» не требует выполнения команд.
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-yb94fp sitelibdir\=./.gem.20240930-14846-yb94fp install
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-yb94fp sitelibdir\=./.gem.20240930-14846-yb94fp clean

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/username/projectname.svg?branch=master)](https://travis-ci.com/username/projectname)
+
 # HexletCode
 
 TODO: Delete this and the text below, and describe your gem

@@ -1,0 +1,18 @@
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+/home/alex/.rvm/rubies/ruby-3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-nis4c1 sitelibdir\=./.gem.20240930-14846-nis4c1 clean
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-nis4c1 sitelibdir\=./.gem.20240930-14846-nis4c1
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-nis4c1 sitelibdir\=./.gem.20240930-14846-nis4c1 install
+/usr/bin/install -m 0755 cparse.so ./.gem.20240930-14846-nis4c1/racc
+
+current directory: /home/alex/Рабочий стол/hexlet_project_1/rails-project-63/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240930-14846-nis4c1 sitelibdir\=./.gem.20240930-14846-nis4c1 clean
