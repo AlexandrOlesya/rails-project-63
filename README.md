@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/AlexandrOlesya/rails-project-63.svg?branch=main)](https://app.travis-ci.com/AlexandrOlesya/rails-project-63)
+[![Build Status](https://app.travis-ci.com/AlexandrOlesya/rails-project-63.svg?token=wM9UsPnqWgaioHQh7DDD)](https://app.travis-ci.com/AlexandrOlesya/rails-project-63)
 
 # HexletCode
 
