@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/AlexandrOlesya/rails-project-63.svg?branch=master)](https://travis-ci.com/username/projectname)
+[![Build Status](https://app.travis-ci.com/AlexandrOlesya/rails-project-63.svg?token=wM9UsPnqWgaioHQh7DDD](https://app.travis-ci.com/AlexandrOlesya/rails-project-63)
 ![CI status](https://github.com/hexlet-boilerplates/ruby-gem/actions/workflows/master.yml/badge.svg)
 
 # HexletCode
