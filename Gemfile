@@ -9,5 +9,7 @@ gem 'rake', '~> 13.0'
 gem 'rubocop', require: false
 
 group :test do
+  gem 'pry'
+  gem 'pry-rails'
   gem 'rspec'
 end
