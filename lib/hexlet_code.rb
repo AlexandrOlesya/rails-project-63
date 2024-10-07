@@ -17,7 +17,7 @@ module HexletCode
     end
 
     def input(attribute, options = {})
-      type = options.fetch(:as, :textarea)
+      type = options.fetch(:as, :input)
       attributes = options.except(:as)
 
       validate_attribute(attribute)
@@ -25,7 +25,7 @@ module HexletCode
       value = @user[attribute].to_s.strip
 
       case type
-      when :textarea
+      when :input
         add_input(attribute, value, attributes)
       when :text
         add_textarea(attribute, value, attributes)
@@ -54,9 +54,9 @@ module HexletCode
     end
 
     def add_textarea(attribute, value, attributes)
-      rows = attributes.fetch(:rows, 40) # по умолчанию 40, если не указано
-      cols = attributes.fetch(:cols, 20) # по умолчанию 20, если не указано
-      attributes_string = build_attributes_string(attributes.except(:rows, :cols)) # исключаем rows и cols
+      rows = attributes.fetch(:rows, 40)
+      cols = attributes.fetch(:cols, 20)
+      attributes_string = build_attributes_string(attributes.except(:rows, :cols))
 
       @inputs << "<textarea name='#{attribute}' rows='#{rows}' cols='#{cols}'#{attributes_string}>#{value}</textarea>"
     end
