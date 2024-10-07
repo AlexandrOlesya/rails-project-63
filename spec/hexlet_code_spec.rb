@@ -35,4 +35,56 @@ RSpec.describe 'HexletCode::Tag' do
       expect(result).to eq("<form action='/users' method='post'></form>")
     end
   end
+
+  context 'Generated fields' do
+    let(:user) { Struct.new(:name, :job, :gender, keyword_init: true).new(name: 'rob', job: 'hexlet', gender: 'm') }
+
+    it 'generate form' do
+      result = HexletCode.form_for user do |f|
+        f.input :name
+        f.input :job, as: :text
+      end
+      expect(result).to eq(
+        "<form action='#' method='post'>" \
+          "<input name='name' type='text' value='rob'>" \
+          "<textarea name='job' rows='40' cols='20'>hexlet</textarea>" \
+        '</form>'
+      )
+    end
+
+    it 'generate form with optional parameter' do
+      result = HexletCode.form_for user, url: '#' do |f|
+        f.input :name, class: 'user-input'
+        f.input :job
+      end
+      expect(result).to eq(
+        "<form action='#' method='post'>" \
+          "<input name='name' type='text' value='rob' class='user-input'>" \
+          "<input name='job' type='text' value='hexlet'>" \
+        '</form>'
+      )
+    end
+
+    it 'generate form with overridden default parameters' do
+      result = HexletCode.form_for user, url: '#' do |f|
+        f.input :job, as: :text, rows: 50, cols: 50
+      end
+      expect(result).to eq(
+        "<form action='#' method='post'>" \
+          "<textarea name='job' rows='50' cols='50'>hexlet</textarea>" \
+        '</form>'
+      )
+    end
+
+    it 'error, if parameter is missing' do
+      expect do
+        HexletCode.form_for user, url: '/users' do |f|
+          f.input :name
+          f.input :job, as: :text
+          f.input :age
+        end
+      end.to raise_error(HexletCode::Error,
+                         /public_send: undefined method age for <#<struct name="rob", job="hexlet", gender="m">>/)
+    end
+  end
 end
