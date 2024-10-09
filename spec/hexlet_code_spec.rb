@@ -54,10 +54,10 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
-          "<label for='name'>Name</label>" \
-          "<input name='name' type='text' value='rob'>" \
-          "<label for='job'>Job</label>" \
-          "<textarea name='job' rows='40' cols='20'>hexlet</textarea>" \
+        "<label for='name'>Name</label>" \
+        "<input name='name' type='text' value='rob'>" \
+        "<label for='job'>Job</label>" \
+        "<textarea name='job' rows='40' cols='20'>hexlet</textarea>" \
         '</form>'
       )
     end
@@ -69,10 +69,10 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
-          "<label for='name'>Name</label>" \
-          "<input name='name' type='text' value='rob' class='user-input'>" \
-          "<label for='job'>Job</label>" \
-          "<input name='job' type='text' value='hexlet'>" \
+        "<label for='name'>Name</label>" \
+        "<input name='name' type='text' value='rob' class='user-input'>" \
+        "<label for='job'>Job</label>" \
+        "<input name='job' type='text' value='hexlet'>" \
         '</form>'
       )
     end
@@ -83,8 +83,8 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
-          "<label for='job'>Job</label>" \
-          "<textarea name='job' rows='50' cols='50'>hexlet</textarea>" \
+        "<label for='job'>Job</label>" \
+        "<textarea name='job' rows='50' cols='50'>hexlet</textarea>" \
         '</form>'
       )
     end
@@ -106,9 +106,9 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
-          "<label for='name'>Name</label>" \
-          "<input name='name' type='text' value='rob'>" \
-          "<input type='submit' value='Save'>" \
+        "<label for='name'>Name</label>" \
+        "<input name='name' type='text' value='rob'>" \
+        "<input type='submit' value='Save'>" \
         '</form>'
       )
     end
@@ -120,9 +120,9 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
-          "<label for='name'>Name</label>" \
-          "<input name='name' type='text' value='rob'>" \
-          "<input type='submit' value='Wow'>" \
+        "<label for='name'>Name</label>" \
+        "<input name='name' type='text' value='rob'>" \
+        "<input type='submit' value='Wow'>" \
         '</form>'
       )
     end
@@ -131,7 +131,7 @@ RSpec.describe 'HexletCode::Tag' do
       result = HexletCode.form_for user, url: '/profile', method: 'get', &:submit
       expect(result).to eq(
         "<form action='/profile' method='get'>" \
-          "<input type='submit' value='Save'>" \
+         "<input type='submit' value='Save'>" \
         '</form>'
       )
     end
