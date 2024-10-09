@@ -87,15 +87,14 @@ RSpec.describe 'HexletCode::Tag' do
       )
     end
 
-    it 'error, if parameter is missing' do
+    it 'raises NoMethodError if parameter is missing' do
       expect do
-        HexletCode.form_for user, url: '/users' do |f|
+        HexletCode.form_for(user, url: '/users') do |f|
           f.input :name
           f.input :job, as: :text
           f.input :age
         end
-      end.to raise_error(HexletCode::Error,
-                         /public_send: undefined method age for <#<struct name="rob", job="hexlet", gender="m">>/)
+      end.to raise_error(NoMethodError, "undefined method 'age' for #<struct User id=nil, name=nil, job=nil>")
     end
 
     it 'generate form with submit' do
@@ -122,6 +121,15 @@ RSpec.describe 'HexletCode::Tag' do
           "<label for='name'>Name</label>" \
           "<input name='name' type='text' value='rob'>" \
           "<input type='submit' value='Wow'>" \
+        '</form>'
+      )
+    end
+
+    it 'submit and change method' do
+      result = HexletCode.form_for user, url: '/profile', method: 'get', &:submit
+      expect(result).to eq(
+        "<form action='/profile' method='get'>" \
+          "<input type='submit' value='Save'>" \
         '</form>'
       )
     end

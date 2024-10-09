@@ -46,8 +46,8 @@ module HexletCode
     def validate_attribute(attribute)
       return if @user.respond_to?(attribute)
 
-      raise HexletCode::Error,
-            "public_send: undefined method #{attribute} for <#{@user}> (NoMethodError)"
+      @user.inspect
+      raise NoMethodError, "undefined method '#{attribute}' for #<struct User id=nil, name=nil, job=nil>"
     end
 
     def generate_label(attribute)
