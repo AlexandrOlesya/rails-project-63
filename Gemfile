@@ -7,6 +7,8 @@ gemspec
 
 gem 'rake', '~> 13.0'
 gem 'rubocop', require: false
+gem 'pry'
+gem 'pry-rails'
 
 group :test do
   gem 'pry'
