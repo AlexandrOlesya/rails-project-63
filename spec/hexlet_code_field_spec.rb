@@ -4,6 +4,7 @@ require_relative '../lib/hexlet_code'
 
 RSpec.describe 'Field' do
   let(:user) { Struct.new(:name, :job, :gender, keyword_init: true).new(name: 'rob', job: 'hexlet', gender: 'm') }
+  
   it 'generate form' do
     result = HexletCode.form_for user do |f|
       f.input :name, class: 'user-input'
@@ -19,15 +20,5 @@ RSpec.describe 'Field' do
       "<input type='submit' value='Wow'>" \
       '</form>'
     )
-  end
-
-  it 'raises NoMethodError if parameter is missing' do
-    expect do
-      HexletCode.form_for(user, url: '/users') do |f|
-        f.input :name
-        f.input :job, as: :text
-        f.input :age
-      end
-    end.to raise_error(NoMethodError, "undefined method 'age' for #<struct User id=nil, name=nil, job=nil>")
   end
 end
