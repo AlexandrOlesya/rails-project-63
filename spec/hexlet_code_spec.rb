@@ -29,6 +29,12 @@ RSpec.describe 'HexletCode::Tag' do
       expect(result).to eq("<form action='#' method='post'></form>")
     end
 
+    it 'form without attributes with change method' do
+      result = HexletCode.form_for user, method: 'get' do |f|
+      end
+      expect(result).to eq("<form action='#' method='get'></form>")
+    end
+
     it 'form with attributes' do
       result = HexletCode.form_for user, url: '/users' do |f|
       end

@@ -82,10 +82,11 @@ module HexletCode
 
   def self.form_for(user, option = {})
     url = option.fetch(:url, '#')
+    method = option.fetch(:method, 'post')
     form_builder = FormBuilder.new(user)
 
     yield(form_builder) if block_given?
 
-    "<form action='#{url}' method='post'>#{form_builder.build}</form>"
+    "<form action='#{url}' method='#{method}'>#{form_builder.build}</form>"
   end
 end
