@@ -4,7 +4,6 @@ require_relative '../lib/hexlet_code'
 
 RSpec.describe 'Field' do
   let(:user) { Struct.new(:name, :job, :gender, keyword_init: true).new(name: 'rob', job: 'hexlet', gender: 'm') }
-
   it 'generate form' do
     result = HexletCode.form_for user do |f|
       f.input :name, class: 'user-input'
