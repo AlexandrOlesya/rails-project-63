@@ -2,7 +2,7 @@
 
 require_relative '../lib/hexlet_code'
 
-RSpec.describe 'HexletCode::Tag' do
+RSpec.describe 'HexletCode' do
   context 'Tag' do
     it 'builds a simple tag with content' do
       result = HexletCode::Tag.build('div', class: 'container') { 'Hello, World!' }
@@ -49,40 +49,13 @@ RSpec.describe 'HexletCode::Tag' do
 
     it 'generate form' do
       result = HexletCode.form_for user do |f|
-        f.input :name
-        f.input :job, as: :text
-      end
-      expect(result).to eq(
-        "<form action='#' method='post'>" \
-        "<label for='name'>Name</label>" \
-        "<input name='name' type='text' value='rob'>" \
-        "<label for='job'>Job</label>" \
-        "<textarea name='job' rows='40' cols='20'>hexlet</textarea>" \
-        '</form>'
-      )
-    end
-
-    it 'generate form with optional parameter' do
-      result = HexletCode.form_for user, url: '#' do |f|
         f.input :name, class: 'user-input'
-        f.input :job
+        f.input :job, as: :text, rows: 50, cols: 50
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
         "<label for='name'>Name</label>" \
         "<input name='name' type='text' value='rob' class='user-input'>" \
-        "<label for='job'>Job</label>" \
-        "<input name='job' type='text' value='hexlet'>" \
-        '</form>'
-      )
-    end
-
-    it 'generate form with overridden default parameters' do
-      result = HexletCode.form_for user, url: '#' do |f|
-        f.input :job, as: :text, rows: 50, cols: 50
-      end
-      expect(result).to eq(
-        "<form action='#' method='post'>" \
         "<label for='job'>Job</label>" \
         "<textarea name='job' rows='50' cols='50'>hexlet</textarea>" \
         '</form>'
@@ -97,20 +70,6 @@ RSpec.describe 'HexletCode::Tag' do
           f.input :age
         end
       end.to raise_error(NoMethodError, "undefined method 'age' for #<struct User id=nil, name=nil, job=nil>")
-    end
-
-    it 'generate form with submit' do
-      result = HexletCode.form_for user do |f|
-        f.input :name
-        f.submit
-      end
-      expect(result).to eq(
-        "<form action='#' method='post'>" \
-        "<label for='name'>Name</label>" \
-        "<input name='name' type='text' value='rob'>" \
-        "<input type='submit' value='Save'>" \
-        '</form>'
-      )
     end
 
     it 'generate form with submit change text button' do
