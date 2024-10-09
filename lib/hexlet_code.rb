@@ -60,7 +60,7 @@ module HexletCode
       label = generate_label(attribute)
       input = "<input name='#{attribute}' type='text' value='#{value}'#{attributes_string}>"
 
-      @inputs << label + input
+      @inputs << (label + input)
     end
 
     def add_textarea(attribute, value, attributes)
@@ -70,7 +70,7 @@ module HexletCode
       label = generate_label(attribute)
       textaria = "<textarea name='#{attribute}' rows='#{rows}' cols='#{cols}'#{attributes_string}>#{value}</textarea>"
 
-      @inputs << label + textaria
+      @inputs << (label + textaria)
     end
 
     def build_attributes_string(attributes)
