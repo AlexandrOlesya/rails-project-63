@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'hexlet_code/version'
-require 'pry'
 
 # main module for connecting form generator classes
 module HexletCode
