@@ -50,10 +50,14 @@ module HexletCode
             "public_send: undefined method #{attribute} for <#{@user}> (NoMethodError)"
     end
 
+    def generate_label(attribute)
+      value = attribute.to_s.capitalize
+      "<label for='#{attribute}'>#{value}</label>"
+    end
+
     def add_input(attribute, value, attributes)
       attributes_string = build_attributes_string(attributes)
-      body = attribute.to_s.capitalize
-      label = "<label for='#{attribute}'>#{body}</label>"
+      label = generate_label(attribute)
       input = "<input name='#{attribute}' type='text' value='#{value}'#{attributes_string}>"
 
       @inputs << label + input
@@ -63,8 +67,10 @@ module HexletCode
       rows = attributes.fetch(:rows, 40)
       cols = attributes.fetch(:cols, 20)
       attributes_string = build_attributes_string(attributes.except(:rows, :cols))
+      label = generate_label(attribute)
+      textaria = "<textarea name='#{attribute}' rows='#{rows}' cols='#{cols}'#{attributes_string}>#{value}</textarea>"
 
-      @inputs << "<textarea name='#{attribute}' rows='#{rows}' cols='#{cols}'#{attributes_string}>#{value}</textarea>"
+      @inputs << label + textaria
     end
 
     def build_attributes_string(attributes)

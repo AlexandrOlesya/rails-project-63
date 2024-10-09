@@ -48,6 +48,7 @@ RSpec.describe 'HexletCode::Tag' do
         "<form action='#' method='post'>" \
           "<label for='name'>Name</label>" \
           "<input name='name' type='text' value='rob'>" \
+          "<label for='job'>Job</label>" \
           "<textarea name='job' rows='40' cols='20'>hexlet</textarea>" \
         '</form>'
       )
@@ -74,6 +75,7 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
+          "<label for='job'>Job</label>" \
           "<textarea name='job' rows='50' cols='50'>hexlet</textarea>" \
         '</form>'
       )
