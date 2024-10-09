@@ -131,7 +131,7 @@ RSpec.describe 'HexletCode::Tag' do
       result = HexletCode.form_for user, url: '/profile', method: 'get', &:submit
       expect(result).to eq(
         "<form action='/profile' method='get'>" \
-         "<input type='submit' value='Save'>" \
+        "<input type='submit' value='Save'>" \
         '</form>'
       )
     end
