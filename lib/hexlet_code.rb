@@ -83,10 +83,15 @@ module HexletCode
   def self.form_for(user, option = {})
     url = option.fetch(:url, '#')
     method = option.fetch(:method, 'post')
+    css_class = option.fetch(:class, nil)
     form_builder = FormBuilder.new(user)
 
     yield(form_builder) if block_given?
 
-    "<form action='#{url}' method='#{method}'>#{form_builder.build}</form>"
+    attributes = []
+    attributes << "class='#{css_class}'" if css_class
+    attributes_str = attributes.empty? ? '' : " #{attributes.join(' ')}"
+
+    "<form action='#{url}' method='#{method}'#{attributes_str}>#{form_builder.build}</form>"
   end
 end
