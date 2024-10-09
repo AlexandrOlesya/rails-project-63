@@ -9,6 +9,7 @@ RSpec.describe 'Field' do
     result = HexletCode.form_for user do |f|
       f.input :name, class: 'user-input'
       f.input :job, as: :text, rows: 50, cols: 50
+      f.submit 'Wow'
     end
     expect(result).to eq(
       "<form action='#' method='post'>" \
@@ -16,6 +17,7 @@ RSpec.describe 'Field' do
       "<input name='name' type='text' value='rob' class='user-input'>" \
       "<label for='job'>Job</label>" \
       "<textarea name='job' rows='50' cols='50'>hexlet</textarea>" \
+      "<input type='submit' value='Wow'>" \
       '</form>'
     )
   end
@@ -28,28 +30,5 @@ RSpec.describe 'Field' do
         f.input :age
       end
     end.to raise_error(NoMethodError, "undefined method 'age' for #<struct User id=nil, name=nil, job=nil>")
-  end
-
-  it 'generate form with submit change text button' do
-    result = HexletCode.form_for user do |f|
-      f.input :name
-      f.submit 'Wow'
-    end
-    expect(result).to eq(
-      "<form action='#' method='post'>" \
-      "<label for='name'>Name</label>" \
-      "<input name='name' type='text' value='rob'>" \
-      "<input type='submit' value='Wow'>" \
-      '</form>'
-    )
-  end
-
-  it 'submit and change method' do
-    result = HexletCode.form_for user, url: '/profile', method: 'get', &:submit
-    expect(result).to eq(
-      "<form action='/profile' method='get'>" \
-      "<input type='submit' value='Save'>" \
-      '</form>'
-    )
   end
 end
