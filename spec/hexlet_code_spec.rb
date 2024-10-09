@@ -46,6 +46,7 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
+          "<label for='name'>Name</label>" \
           "<input name='name' type='text' value='rob'>" \
           "<textarea name='job' rows='40' cols='20'>hexlet</textarea>" \
         '</form>'
@@ -59,7 +60,9 @@ RSpec.describe 'HexletCode::Tag' do
       end
       expect(result).to eq(
         "<form action='#' method='post'>" \
+          "<label for='name'>Name</label>" \
           "<input name='name' type='text' value='rob' class='user-input'>" \
+          "<label for='job'>Job</label>" \
           "<input name='job' type='text' value='hexlet'>" \
         '</form>'
       )
@@ -85,6 +88,34 @@ RSpec.describe 'HexletCode::Tag' do
         end
       end.to raise_error(HexletCode::Error,
                          /public_send: undefined method age for <#<struct name="rob", job="hexlet", gender="m">>/)
+    end
+
+    it 'generate form with submit' do
+      result = HexletCode.form_for user do |f|
+        f.input :name
+        f.submit
+      end
+      expect(result).to eq(
+        "<form action='#' method='post'>" \
+          "<label for='name'>Name</label>" \
+          "<input name='name' type='text' value='rob'>" \
+          "<input type='submit' value='Save'>" \
+        '</form>'
+      )
+    end
+
+    it 'generate form with submit change text button' do
+      result = HexletCode.form_for user do |f|
+        f.input :name
+        f.submit 'Wow'
+      end
+      expect(result).to eq(
+        "<form action='#' method='post'>" \
+          "<label for='name'>Name</label>" \
+          "<input name='name' type='text' value='rob'>" \
+          "<input type='submit' value='Wow'>" \
+        '</form>'
+      )
     end
   end
 end

@@ -34,6 +34,10 @@ module HexletCode
       end
     end
 
+    def submit(value = 'Save')
+      @inputs << "<input type='submit' value='#{value}'>"
+    end
+
     def build
       @inputs.join
     end
@@ -49,8 +53,11 @@ module HexletCode
 
     def add_input(attribute, value, attributes)
       attributes_string = build_attributes_string(attributes)
+      body = attribute.to_s.capitalize
+      label = "<label for='#{attribute}'>#{body}</label>"
+      input = "<input name='#{attribute}' type='text' value='#{value}'#{attributes_string}>"
 
-      @inputs << "<input name='#{attribute}' type='text' value='#{value}'#{attributes_string}>"
+      @inputs << label + input
     end
 
     def add_textarea(attribute, value, attributes)
