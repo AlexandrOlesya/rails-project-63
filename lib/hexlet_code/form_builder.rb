@@ -73,7 +73,13 @@ class FormBuilder
 
   def add_textarea(attribute, value, **options)
     add_label(attribute)
-    @form_body << Element.new('textarea', name: attribute, value:, rows: options.fetch(:rows, 40), cols: options.fetch(:cols, 20))
+    @form_body << Element.new(
+      'textarea',
+      name: attribute,
+      value:,
+      rows: options.fetch(:rows, 40),
+      cols: options.fetch(:cols, 20)
+      )
   end
 
   def entity_class
