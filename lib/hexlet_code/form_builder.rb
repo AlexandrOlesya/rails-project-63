@@ -25,7 +25,7 @@ class FormBuilder
   end
 
   def submit(value = 'Save')
-    @form_body << Element.new('input', type: 'submit', value: value)
+    @form_body << Element.new('input', type: 'submit', :value =>  value)
   end
 
   def build
