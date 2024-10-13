@@ -29,7 +29,7 @@ class FormBuilder
   end
 
   def build
-    @form_body.map { |element| generate_html(element) }.join('')
+    @form_body.map { |element| generate_html(element) }.join
   end
 
   private
