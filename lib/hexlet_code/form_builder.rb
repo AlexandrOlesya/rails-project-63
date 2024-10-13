@@ -10,15 +10,15 @@ class FormBuilder
     @form_body = []
   end
 
-  def input(attribute, as: :input, **options)
+  def input(attribute, as: :input, **)
     validate_attribute(attribute)
     value = @entity[attribute].to_s.strip
 
     case as
     when :input
-      add_input(attribute, value, **options)
+      add_input(attribute, value, **)
     when :text
-      add_textarea(attribute, value, **options)
+      add_textarea(attribute, value, **)
     else
       raise HexletCode::Error, "Unknown input type: #{as}"
     end
@@ -66,9 +66,9 @@ class FormBuilder
     raise NoMethodError, "undefined method '#{attribute}' for #<struct User id=nil, name=nil, job=nil>"
   end
 
-  def add_input(attribute, value, **options)
+  def add_input(attribute, value, **)
     add_label(attribute)
-    @form_body << Element.new('input', { name: attribute, type: 'text', value: value, **options })
+    @form_body << Element.new('input', { name: attribute, type: 'text', value: value, ** })
   end
 
   def add_textarea(attribute, value, **options)
