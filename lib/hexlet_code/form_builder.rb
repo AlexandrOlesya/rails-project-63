@@ -78,7 +78,8 @@ class FormBuilder
       name: attribute,
       value:,
       rows: options.fetch(:rows, 40),
-      cols: options.fetch(:cols, 20))
+      cols: options.fetch(:cols, 20)
+    )
   end
 
   def entity_class
