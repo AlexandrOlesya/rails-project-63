@@ -9,8 +9,8 @@ This project provides a simple and flexible mechanism for generating HTML forms 
 
 1. Clone the repository:
  ```
-     git clone https://github.com/your-repository/hexlet_code.git
-     cd hexlet_code
+     git clone https://github.com/AlexandrOlesya/rails-project-63.git
+     cd rails-project-63
 ```
 3. Install dependencies:
 ```
