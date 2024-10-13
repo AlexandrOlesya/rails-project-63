@@ -25,7 +25,7 @@ class FormBuilder
   end
 
   def submit(value = 'Save')
-    @form_body << Element.new('input', { type: 'submit', value: value })
+    @form_body << Element.new('input', type: 'submit', value: value)
   end
 
   def build
@@ -68,14 +68,12 @@ class FormBuilder
 
   def add_input(attribute, value, **)
     add_label(attribute)
-    @form_body << Element.new('input', { name: attribute, type: 'text', value: value, ** })
+    @form_body << Element.new('input', name: attribute, type: 'text', value: value, **)
   end
 
   def add_textarea(attribute, value, **options)
     add_label(attribute)
-    @form_body << Element.new('textarea', { name: attribute, value: value,
-                                             rows: options.fetch(:rows, 40),
-                                             cols: options.fetch(:cols, 20) })
+    @form_body << Element.new('textarea', name: attribute, value: value, rows: options.fetch(:rows, 40), cols: options.fetch(:cols, 20))
   end
 
   def entity_class
