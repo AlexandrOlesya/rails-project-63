@@ -20,11 +20,8 @@ class FormBuilder
   def input(name, attributes = {})
     input_type = attributes.fetch(:as, 'text')
 
-    if input_type == :text
-      @form_body[:inputs] << build_textarea_attributes(name, attributes)
-    else
-      @form_body[:inputs] << build_input_attributes(name, attributes)
-    end
+    input_attributes = input_type == :text ? build_textarea_attributes(name, attributes) : build_input_attributes(name, attributes)
+    @form_body[:inputs] << input_attributes
   end
 
   def submit(value = 'Save')
