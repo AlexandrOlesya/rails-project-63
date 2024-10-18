@@ -20,7 +20,7 @@ class FormBuilder
   def input(name, attributes = {})
     input_type = attributes.fetch(:as, 'text')
 
-    input_attributes = if input_type == :textarea
+    input_attributes = if input_type == :text
                         build_textarea_attributes(name, attributes)
                       else
                         build_input_attributes(name, attributes)
