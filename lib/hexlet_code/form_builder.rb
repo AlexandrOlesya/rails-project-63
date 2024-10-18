@@ -20,7 +20,12 @@ class FormBuilder
   def input(name, attributes = {})
     input_type = attributes.fetch(:as, 'text')
 
-    input_attributes = input_type == :text ? build_textarea_attributes(name, attributes) : build_input_attributes(name, attributes)
+    input_attributes = if input_type == :textarea
+                        build_textarea_attributes(name, attributes)
+                      else
+                        build_input_attributes(name, attributes)
+                      end
+
     @form_body[:inputs] << input_attributes
   end
 
@@ -31,7 +36,10 @@ class FormBuilder
   private
 
   def build_input_attributes(name, attributes)
-    raise NoMethodError, "undefined method '#{name}' for #<struct User id=nil, name=nil, job=nil>" unless @entity.respond_to?(name)
+    unless @entity.respond_to?(name)
+      raise NoMethodError, "undefined method '#{name}' for #<struct User " \
+                           "id=nil, name=nil, job=nil>"
+    end
 
     {
       name: name,
