@@ -27,9 +27,7 @@ class FormBuilder
   end
 
   def submit(value = 'Save')
-    if @form_body[:inputs].any?
-      @form_body[:submit] = { value: value }
-    end
+    @form_body[:submit] = { value: value } if @form_body[:inputs].any? || !@form_body[:submit]
   end
 
   private

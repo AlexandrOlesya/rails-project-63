@@ -11,13 +11,8 @@ RSpec.describe 'Form' do
   end
 
   it 'form without attributes with change method' do
-    result = HexletCode.form_for user, method: 'get'
-    expect(result).to eq("<form action='#' method='get'></form>")
-  end
-
-  it 'form without attributes with change method and optional params' do
-    result = HexletCode.form_for user, method: 'get', class: 'hexlet-form'
-    expect(result).to eq("<form action='#' method='get' class='hexlet-form'></form>")
+    result = HexletCode.form_for user, action: '/profile', method: 'get', class: 'hexlet-form'
+    expect(result).to eq("<form action='/profile' method='get' class='hexlet-form'></form>")
   end
 
   it 'form with attributes' do
