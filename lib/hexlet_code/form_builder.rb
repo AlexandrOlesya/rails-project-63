@@ -31,7 +31,7 @@ class FormBuilder
   private
 
   def build_input_attributes(name, attributes)
-    raise NoMethodError, "undefined method '#{name}' for #<struct User id=nil, name=nil, job=nil>" if !@entity.respond_to?(name)
+    raise NoMethodError, "undefined method '#{name}' for #<struct User id=nil, name=nil, job=nil>" unless @entity.respond_to?(name)
 
     {
       name: name,
