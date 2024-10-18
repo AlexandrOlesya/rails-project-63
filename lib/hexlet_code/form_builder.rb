@@ -32,15 +32,6 @@ class FormBuilder
     end
   end
 
-  def self.render_textarea(input)
-    class_attr = input[:class] ? "class='#{input[:class]}'" : ""
-    rows = input[:rows]
-    cols = input[:cols]
-    value = input[:value]
-    attributes = "name='#{input[:name]}' rows='#{rows}' cols='#{cols}' #{class_attr}".strip
-    "<textarea #{attributes}>#{value}</textarea>"
-  end
-
   private
 
   def build_input_attributes(name, attributes)
