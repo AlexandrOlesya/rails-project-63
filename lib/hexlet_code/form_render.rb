@@ -6,7 +6,7 @@ module HexletCode
       form_options = form_structure[:form_options]
       inputs = render_inputs(form_structure[:inputs])
       submit = render_submit(form_structure[:submit]) if form_structure[:submit]
-    
+
       "<form #{render_form_attributes(form_options)}>#{inputs}#{submit}</form>"
     end
 
