@@ -21,9 +21,9 @@ class FormBuilder
     input_type = attributes.fetch(:as, 'text')
 
     input_attributes = if input_type == :text
-                          build_textarea_attributes(name, attributes)
+                         build_textarea_attributes(name, attributes)
                        else
-                          build_input_attributes(name, attributes)
+                         build_input_attributes(name, attributes)
                        end
 
     @form_body[:inputs] << input_attributes
