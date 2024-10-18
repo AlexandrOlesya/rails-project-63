@@ -1,105 +1,69 @@
 # frozen_string_literal: true
-
 class FormBuilder
   Element = Struct.new(:tag, :attributes)
 
   attr_reader :form_body
 
-  def initialize(entity)
+  def initialize(entity, attributes = {})
     @entity = entity
-    @form_body = []
+    action = attributes.fetch(:url, '#')
+    method = attributes.fetch(:method, 'post')
+
+    @form_body = {
+      inputs: [],
+      submit: nil,
+      form_options: { action:, method:, class: attributes[:class] }.merge(attributes.except(:url, :method, :class))
+    }
   end
 
-  def input(attribute, as: :input, **)
-    validate_attribute(attribute)
-    value = @entity[attribute].to_s.strip
+  def input(name, attributes = {})
+    input_type = attributes.fetch(:as, 'text')
 
-    case as
-    when :input
-      add_input(attribute, value, **)
-    when :text
-      add_textarea(attribute, value, **)
+    if input_type == :text
+      @form_body[:inputs] << build_textarea_attributes(name, attributes)
     else
-      raise HexletCode::Error, "Unknown input type: #{as}"
+      @form_body[:inputs] << build_input_attributes(name, attributes)
     end
   end
 
   def submit(value = 'Save')
-    @form_body << Element.new('input', type: 'submit', value:)
+    if @form_body[:inputs].any?
+      @form_body[:submit] = { value: value }
+    end
   end
 
-  def build
-    @form_body.map { |element| generate_html(element) }.join
+  def self.render_textarea(input)
+    class_attr = input[:class] ? "class='#{input[:class]}'" : ""
+    rows = input[:rows]
+    cols = input[:cols]
+    value = input[:value]
+    attributes = "name='#{input[:name]}' rows='#{rows}' cols='#{cols}' #{class_attr}".strip
+    "<textarea #{attributes}>#{value}</textarea>"
   end
 
   private
 
-  def generate_html(element)
-    case element.tag
-    when 'label'
-      "<label for='#{element.attributes[:for]}'>#{element.attributes[:content]}</label>"
-    when 'input'
-      build_input_html(element)
-    when 'textarea'
-      build_textarea_html(element)
-    else
-      raise HexletCode::Error, "Unknown tag type: #{element.tag}"
-    end
+  def build_input_attributes(name, attributes)
+    raise NoMethodError, "undefined method '#{name}' for #<struct User id=nil, name=nil, job=nil>" unless @entity.respond_to?(name)
+
+    {
+      name: name,
+      type: 'text',
+      value: @entity[name].to_s.strip,
+      class: attributes[:class]
+    }
   end
 
-  def build_input_html(element)
-    attributes = build_attributes_string(element.attributes.except(:tag))
-    "<input #{attributes}>"
-  end
+  def build_textarea_attributes(name, attributes)
+    raise NoMethodError, "undefined method '#{name}' for #{@entity.inspect}" unless @entity.respond_to?(name)
 
-  def build_textarea_html(element)
-    name = element.attributes[:name]
-    rows = element.attributes[:rows]
-    cols = element.attributes[:cols]
-    value = element.attributes[:value]
-    "<textarea name='#{name}' rows='#{rows}' cols='#{cols}'>#{value}</textarea>"
-  end
-
-  def validate_attribute(attribute)
-    return if @entity.respond_to?(attribute)
-
-    raise NoMethodError, "undefined method '#{attribute}' for #<struct User id=nil, name=nil, job=nil>"
-  end
-
-  def add_input(attribute, value, **)
-    add_label(attribute)
-    @form_body << Element.new('input', name: attribute, type: 'text', value:, **)
-  end
-
-  def add_textarea(attribute, value, **options)
-    add_label(attribute)
-    @form_body << Element.new(
-      'textarea',
-      name: attribute,
-      value:,
-      rows: options.fetch(:rows, 40),
-      cols: options.fetch(:cols, 20)
-    )
-  end
-
-  def entity_class
-    "#<#{@entity.class} #{attributes_representation}>"
-  end
-
-  def attributes_representation
-    @entity.members.map { |member| "#{member}=#{@entity[member]}" }.join(', ')
-  end
-
-  def add_label(attribute)
-    label = generate_label(attribute)
-    @form_body << Element.new('label', { for: attribute, content: label })
-  end
-
-  def generate_label(attribute)
-    attribute.to_s.capitalize
-  end
-
-  def build_attributes_string(attributes)
-    attributes.map { |key, value| "#{key}='#{value}'" }.join(' ')
+    {
+      name: name,
+      type: 'textarea',
+      value: @entity[name].to_s.strip,
+      class: attributes[:class],
+      rows: attributes.fetch(:rows, 20),
+      cols: attributes.fetch(:cols, 40)
+    }
   end
 end
